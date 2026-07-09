@@ -3,70 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>濮阳医院分布地图</title>
+    <title>濮阳医院地图</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="../assets/css/map.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="../index.html">🗺️ 返回濮阳总地图</a>
+        <a class="navbar-brand" href="../index.html">← 返回全域总地图</a>
     </div>
 </nav>
-
 <div class="container py-3">
-    <h4 class="text-center mb-3">濮阳市医院&社区卫生服务中心分布</h4>
+    <h4 class="text-center mb-3">全市医院、社区卫生中心点位</h4>
     <div id="map"></div>
-
-    <div class="mt-4 card p-4">
-        <h5>重点医院急救电话</h5>
-        <ul class="mb-0">
+    <div class="card p-4 mt-4">
+        <h5>急救联系电话</h5>
+        <ul>
             <li>濮阳市人民医院急救：0393-6120120</li>
             <li>濮阳市中医院急诊：0393-4412120</li>
             <li>华龙区人民医院：0393-8100120</li>
-            <li>濮阳县人民医院：0393-3223120</li>
+            <li>统一急救电话：120</li>
         </ul>
     </div>
 </div>
-
-<footer class="bg-dark text-white py-2 text-center mt-4">
-    <small>濮阳便民地图 - 医疗点位专题</small>
+<footer class="bg-dark text-white text-center mt-4">
+    <small>濮阳便民地图 · 医疗点位专题</small>
 </footer>
-
 <script>
-// 初始化地图
 const map = L.map('map').setView([35.7762, 115.0186], 11);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap'
-}).addTo(map);
-
-// 医疗图标
-const hospitalIcon = L.divIcon({
-    html: '🏥',
-    className: 'fs-3 text-danger',
-    iconSize: [30, 30]
-});
-
-// 濮阳全部医院数据
-const hospitalList = [
-    {name: "濮阳市人民医院", lat: 35.7730, lng: 115.0010, tip: "三甲综合医院"},
-    {name: "濮阳市中医院", lat: 35.7810, lng: 115.0120, tip: "三甲中医医院"},
-    {name: "华龙区人民医院", lat: 35.7660, lng: 114.9880, tip: "区级综合医院"},
-    {name: "濮阳县人民医院", lat: 35.7020, lng: 114.9610, tip: "濮阳县综合医院"},
-    {name: "清丰县人民医院", lat: 35.9010, lng: 115.1050, tip: "清丰县综合医院"},
-    {name: "南乐县人民医院", lat: 36.0730, lng: 115.2080, tip: "南乐县综合医院"},
-    {name: "范县人民医院", lat: 35.7520, lng: 115.4760, tip: "范县综合医院"},
-    {name: "台前县人民医院", lat: 35.9350, lng: 115.7820, tip: "台前县综合医院"}
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+const hospIcon = L.divIcon({html:'🏥', className:'fs-3 text-danger', iconSize:[30,30]});
+const hospList = [
+    {name:"濮阳市人民医院",lat:35.773,lng:115.001},
+    {name:"濮阳市中医院",lat:35.781,lng:115.012},
+    {name:"华龙区人民医院",lat:35.766,lng:114.988},
+    {name:"濮阳县人民医院",lat:35.702,lng:114.961},
+    {name:"清丰县人民医院",lat:35.901,lng:115.105}
 ];
-
-// 批量渲染标记
-hospitalList.forEach(item => {
-    L.marker([item.lat, item.lng], {icon: hospitalIcon})
-        .addTo(map)
-        .bindPopup(`<strong>${item.name}</strong><br>${item.tip}`);
-});
+hospList.forEach(item=>{
+    L.marker([item.lat,item.lng],{icon:hospIcon}).addTo(map).bindPopup(`<b>${item.name}</b>`);
+})
 </script>
 </body>
 </html>
