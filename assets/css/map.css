@@ -1,35 +1,41 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-html,body{
-    height:100%;
-    font-family:"微软雅黑",sans-serif;
+html, body {
+    height: 100%;
+    font-family: "Microsoft Yahei", sans-serif;
 }
-#map{
-    width:100%;
-    height:calc(100vh - 128px);
+/* 地图容器高度 */
+#map {
+    width: 100%;
+    height: calc(100vh - 130px);
 }
-.navbar{
-    z-index:9999;
+/* 导航层级高于地图控件 */
+.navbar {
+    z-index: 9999;
 }
-.sidebar-box{
-    max-height:70vh;
-    overflow-y:auto;
+/* 左侧搜索悬浮卡片 */
+.search-panel {
+    position: absolute;
+    top: 85px;
+    left: 12px;
+    z-index: 999;
+    width: 320px;
 }
-.leaflet-control-container{
-    z-index:999;
-}
-.search-card{
-    position:absolute;
-    top:80px;
-    left:10px;
-    z-index:999;
-    width:300px;
-}
-@media (max-width:768px){
-    .search-card{
-        width:calc(100% - 20px);
+/* 手机端适配搜索框 */
+@media (max-width: 768px) {
+    .search-panel {
+        width: calc(100% - 24px);
     }
+}
+/* Leaflet弹窗文字优化 */
+.leaflet-popup-content-wrapper {
+    font-size: 14px;
+}
+/* 底部页脚固定样式 */
+footer {
+    height: 46px;
+    line-height: 46px;
 }
