@@ -3,57 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>濮阳政务点位地图</title>
+    <title>濮阳政务服务点位地图</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="../assets/css/map.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="../index.html">🗺️ 返回濮阳总地图</a>
+        <a class="navbar-brand" href="../index.html">← 返回全域总地图</a>
     </div>
 </nav>
-
 <div class="container py-3">
-    <h4 class="text-center mb-3">政务大厅、公安局、车管所点位</h4>
+    <h4 class="text-center mb-3">政务大厅、公安局、车管所分布</h4>
     <div id="map"></div>
-
-    <div class="mt-4 card p-4">
-        <h5>便民办事提示</h5>
-        <p class="mb-0">全市统一政务热线：12345；报警电话：110</p>
+    <div class="card p-4 mt-4">
+        <h5>便民热线</h5>
+        <p>政务服务热线：12345 | 报警：110</p>
     </div>
 </div>
-
-<footer class="bg-dark text-white py-2 text-center mt-4">
-    <small>濮阳便民地图 - 政务服务专题</small>
+<footer class="bg-dark text-white text-center mt-4">
+    <small>濮阳便民地图 · 政务服务专题</small>
 </footer>
-
 <script>
 const map = L.map('map').setView([35.7762, 115.0186], 11);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-const govIcon = L.divIcon({
-    html: '🏛️',
-    className: 'fs-3 text-primary',
-    iconSize: [30, 30]
-});
-
+const govIcon = L.divIcon({html:'🏛️', className:'fs-3 text-primary', iconSize:[30,30]});
 const govList = [
-    {name: "濮阳市政务服务大厅", lat: 35.7860, lng: 115.0280, tip: "社保、不动产、营业执照一站式办理"},
-    {name: "濮阳市公安局", lat: 35.7780, lng: 115.0140, tip: "市局综合办公区"},
-    {name: "华龙区政府", lat: 35.7700, lng: 114.9960, tip: "华龙区人民政府"},
-    {name: "濮阳市车管所", lat: 35.7510, lng: 114.9420, tip: "机动车上牌、年检、换证"},
-    {name: "濮阳县政务大厅", lat: 35.6980, lng: 114.9560, tip: "濮阳县政务办事窗口"},
-    {name: "清丰县公安局", lat: 35.8960, lng: 115.1010, tip: "清丰公安分局"}
+    {name:"濮阳市政务服务大厅",lat:35.786,lng:115.028},
+    {name:"濮阳市公安局",lat:35.778,lng:115.014},
+    {name:"华龙区政府",lat:35.770,lng:114.996},
+    {name:"濮阳市车管所",lat:35.751,lng:114.942}
 ];
-
-govList.forEach(item => {
-    L.marker([item.lat, item.lng], {icon: govIcon})
-        .addTo(map)
-        .bindPopup(`<strong>${item.name}</strong><br>${item.tip}`);
-});
+govList.forEach(item=>{
+    L.marker([item.lat,item.lng],{icon:govIcon}).addTo(map).bindPopup(`<b>${item.name}</b>`);
+})
 </script>
 </body>
 </html>
