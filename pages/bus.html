@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>濮阳公交线路地图</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="../assets/css/map.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">🗺️ 返回濮阳总地图</a>
+    </div>
+</nav>
+
+<div class="container py-3">
+    <h4 class="text-center mb-3">濮阳主城区主要公交站点分布</h4>
+    <div id="map"></div>
+
+    <div class="mt-4 card p-4">
+        <h5>热门线路起止点</h5>
+        <ul class="mb-0">
+            <li>1路：火车站 ↔ 龙湖广场</li>
+            <li>2路：油田总站 ↔ 市政务大厅</li>
+            <li>6路：戚城公园 ↔ 水秀</li>
+            <li>16路：濮阳县 ↔ 高铁站</li>
+            <li>23路：华龙区政府 ↔ 车管所</li>
+        </ul>
+    </div>
+</div>
+
+<footer class="bg-dark text-white py-2 text-center mt-4">
+    <small>濮阳便民地图 - 公交出行专题</small>
+</footer>
+
+<script>
+const map = L.map('map').setView([35.7762, 115.0186], 12);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+const busIcon = L.divIcon({
+    html: '🚌',
+    className: 'fs-3 text-success',
+    iconSize: [30, 30]
+});
+
+const busStationList = [
+    {name: "龙湖广场公交站", lat: 35.7890, lng: 115.0310},
+    {name: "戚城公园站", lat: 35.7780, lng: 115.0060},
+    {name: "水秀大剧院站", lat: 35.7930, lng: 115.0370},
+    {name: "市人民医院站", lat: 35.7720, lng: 114.9990},
+    {name: "政务大厅站", lat: 35.7850, lng: 115.0270},
+    {name: "油田总站", lat: 35.7610, lng: 114.9720},
+    {name: "濮阳高铁站", lat: 35.8210, lng: 115.1030},
+    {name: "车管所公交站", lat: 35.7500, lng: 114.9400}
+];
+
+busStationList.forEach(item => {
+    L.marker([item.lat, item.lng], {icon: busIcon})
+        .addTo(map)
+        .bindPopup(`<strong>公交站：${item.name}</strong>`);
+});
+</script>
+</body>
+</html>
