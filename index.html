@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>濮阳便民电子地图 | 全域景点医院小区查询</title>
-    <!-- Bootstrap5样式CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Leaflet地图核心样式 -->
+    <!-- 1. 先加载Leaflet地图核心（必须放最前） -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <!-- 自定义地图样式 -->
+    <!-- 2. Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 3. 自定义样式最后 -->
     <link rel="stylesheet" href="assets/css/map.css">
 </head>
 <body>
@@ -32,7 +32,7 @@
     </div>
 </nav>
 
-<!-- 左侧悬浮搜索面板 -->
+<!-- 左侧搜索框 -->
 <div class="card shadow p-3 search-panel">
     <h6 class="mb-2">地点快速检索</h6>
     <div class="input-group">
@@ -42,19 +42,17 @@
     <div class="mt-2 small text-secondary">支持小区、景区、医院、政务大厅检索</div>
 </div>
 
-<!-- 地图渲染容器 -->
-<div id="map"></div>
+<!-- 地图容器，自带背景底色，网络差也不会纯白 -->
+<div id="map">地图加载中，请稍候...</div>
 
-<!-- 底部页脚 -->
+<!-- 底部 -->
 <footer class="bg-dark text-white text-center">
     <small>濮阳便民电子地图 ©2026 开源静态项目 | 覆盖华龙区、濮阳县、清丰、南乐、范县、台前</small>
 </footer>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Leaflet地图JS -->
+<!-- JS顺序严格：Leaflet → Bootstrap → 自定义地图JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<!-- 自定义地图逻辑 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/map.js"></script>
 </body>
 </html>
