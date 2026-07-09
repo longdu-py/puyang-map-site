@@ -6,47 +6,46 @@
     <title>濮阳旅游景点地图</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="../assets/css/map.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="../index.html">🗺️ 返回濮阳总地图</a>
+        <a class="navbar-brand" href="../index.html">← 返回全域总地图</a>
     </div>
 </nav>
 <div class="container py-3">
-    <h4 class="text-center">濮阳市全部旅游景区分布</h4>
+    <h4 class="text-center mb-3">濮阳市全部旅游景区分布</h4>
     <div id="map"></div>
-    <div class="mt-4 card p-3">
-        <h5>景区清单</h5>
+    <div class="card p-4 mt-4">
+        <h5>区县景区清单</h5>
         <ul>
-            <li>华龙区：戚城公园、龙湖、水秀、东北庄杂技园</li>
+            <li>华龙区：戚城公园、龙湖、水秀大剧院、东北庄杂技园</li>
             <li>清丰县：单拐革命旧址、孝道文化园</li>
-            <li>南乐县：仓颉陵、文庙</li>
+            <li>南乐县：仓颉陵、南乐文庙</li>
             <li>范县：毛楼黄河景区、板桥古镇</li>
             <li>台前县：将军渡、黄河湿地公园</li>
             <li>濮阳县：挥公陵、舜帝宫</li>
         </ul>
     </div>
 </div>
-<footer class="bg-dark text-white py-2 text-center mt-4">
-    <small>濮阳景点专题地图</small>
+<footer class="bg-dark text-white text-center mt-4">
+    <small>濮阳便民地图 · 旅游景点专题</small>
 </footer>
 <script>
-const map = L.map('map').setView([35.7762, 115.0186],10);
+const map = L.map('map').setView([35.7762, 115.0186], 10);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+const scenicIcon = L.divIcon({html:'🏞️', className:'fs-3', iconSize:[30,30]});
 const scenicList = [
-    {n:"戚城文物景区",lat:35.779,lng:115.007},
-    {n:"龙湖公园",lat:35.788,lng:115.030},
-    {n:"水秀大剧院",lat:35.792,lng:115.036},
-    {n:"仓颉陵",lat:35.866,lng:115.102},
-    {n:"单拐旧址",lat:35.841,lng:115.220},
-    {n:"毛楼景区",lat:35.622,lng:115.633}
+    {name:"戚城文物景区",lat:35.779,lng:115.007},
+    {name:"龙湖公园",lat:35.788,lng:115.030},
+    {name:"水秀国际大剧院",lat:35.792,lng:115.036},
+    {name:"仓颉陵",lat:35.866,lng:115.102},
+    {name:"单拐革命旧址",lat:35.841,lng:115.220},
+    {name:"毛楼生态旅游区",lat:35.622,lng:115.633}
 ];
-const icon = L.divIcon({html:'🏞️',iconSize:[30,30]});
-scenicList.forEach(s=>{
-    L.marker([s.lat,s.lng],{icon}).addTo(map).bindPopup(s.n);
+scenicList.forEach(item=>{
+    L.marker([item.lat,item.lng],{icon:scenicIcon}).addTo(map).bindPopup(`<b>${item.name}</b>`);
 })
 </script>
 </body>
