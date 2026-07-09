@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+html,body{
+    height:100%;
+    font-family:"微软雅黑",sans-serif;
+}
+#map{
+    width:100%;
+    height:calc(100vh - 128px);
+}
+.navbar{
+    z-index:9999;
+}
+.sidebar-box{
+    max-height:70vh;
+    overflow-y:auto;
+}
+.leaflet-control-container{
+    z-index:999;
+}
+.search-card{
+    position:absolute;
+    top:80px;
+    left:10px;
+    z-index:999;
+    width:300px;
+}
+@media (max-width:768px){
+    .search-card{
+        width:calc(100% - 20px);
+    }
+}
