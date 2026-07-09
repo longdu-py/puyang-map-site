@@ -1,11 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>濮阳便民电子地图</title>
-  <!-- ✅ 修复：CDN 加载 Leaflet，顺序正确 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <!-- ✅ 修复：相对路径 -->
-  <link rel="stylesheet" href="assets/css/map.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>濮阳便民电子地图 | 全域景点医院小区查询</title>
+    <!-- Bootstrap5样式CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Leaflet地图核心样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <!-- 自定义地图样式 -->
+    <link rel="stylesheet" href="assets/css/map.css">
 </head>
+<body>
+<!-- 顶部导航栏 -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">🗺️ 濮阳便民地图</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navBox">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navBox">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">全域总地图</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/scenic.html">旅游景点</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/hospital.html">医院分布</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/gov.html">政务大厅</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/bus.html">公交站点</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/community.html">住宅小区</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 左侧悬浮搜索面板 -->
+<div class="card shadow p-3 search-panel">
+    <h6 class="mb-2">地点快速检索</h6>
+    <div class="input-group">
+        <input id="searchInput" class="form-control" placeholder="龙城新居/戚城公园/市人民医院">
+        <button id="searchBtn" class="btn btn-primary">定位</button>
+    </div>
+    <div class="mt-2 small text-secondary">支持小区、景区、医院、政务大厅检索</div>
+</div>
+
+<!-- 地图渲染容器 -->
+<div id="map"></div>
+
+<!-- 底部页脚 -->
+<footer class="bg-dark text-white text-center">
+    <small>濮阳便民电子地图 ©2026 开源静态项目 | 覆盖华龙区、濮阳县、清丰、南乐、范县、台前</small>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Leaflet地图JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- 自定义地图逻辑 -->
+<script src="assets/js/map.js"></script>
+</body>
+</html>
